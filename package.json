@@ -1,0 +1,19 @@
+{
+  "name": "mongo-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.13.2",
+    "mongoose": "4.7.6",
+    "mongodb": "^2.2.33",
+    "morgan": "~1.6.1",
+    "body-parser": "~1.14.1",
+    "method-override": "~2.3.5"
+  }
+}

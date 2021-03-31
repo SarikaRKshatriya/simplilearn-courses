@@ -1,0 +1,190 @@
+<html ng-app="bogoCourses">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Node.js Courses App</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background:#67b5ab;
+}
+.courses-container {
+color: white;
+position: absolute;
+top:50%;
+left: 50%;
+padding: 20px;
+width: 600px;
+transform: translate(-50%,-50%);
+background: rgba(255, 255, 255, 0.1);
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.courses {
+width: 400px;
+}
+.courses-container h2 {
+padding: 10px;
+font-family: 'Candal', sans-serif;
+font-size: 2em;
+}
+.courses-header input {
+width: 92%;
+border: none;
+border-radius: 5px;
+height: 20px;
+font-family: 'Candal', sans-serif;
+}
+.courses-header button {
+color: white;
+border: none;
+border-radius: 50%;
+cursor: pointer;
+padding: 5px;
+font-family: 'Candal', sans-serif;
+background-color: rgb(51, 212, 100);
+}
+.courses-container ul {
+list-style: none;
+}
+.courses-list-item {
+padding: 10px;
+margin-top: 10px;
+border: none;
+border-radius: 5px;
+font-family: 'Candal', sans-serif;
+background: rgba(0, 0, 0, 0.3);
+display: flex;
+flex-direction: row;
+}
+.courses-list-item form {
+width: 100%;
+display: flex;
+}
+.courses-list-item input {
+flex-grow: 2;
+margin-right: 20px;
+border: none;
+border-radius: 5px;
+font-family: 'Candal', sans-serif;
+}
+button {
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+padding: 5px;
+font-family: 'Candal', sans-serif;
+background-color: rgb(51, 212, 100);
+}
+.courses-list-item .cancel {
+color: white;
+text-decoration: none;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+padding: 5px;
+font-family: 'Candal', sans-serif;
+background-color: rgb(223, 43, 43);
+margin-left: 5px;
+}
+.courses-list-item div {
+flex-grow: 2;
+}
+.courses-list-item .edit {
+color : rgb(143, 233, 58);
+margin-right: 10px;
+cursor:pointer;
+text-decoration: none;
+}
+.courses-list-item .remove {
+color : rgb(243, 96, 96);
+margin-right: 5px;
+cursor:pointer;
+text-decoration: none;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="core.js"></script>
+
+</head>
+<body ng-controller="mainController">
+    <div class="courses-container">
+
+        <h2>Simplilearn's Courses List</h2>
+        <div class="courses">
+               <div id="courses-form" class="row">
+          
+                <form class="courses-header">
+                     <input type="text" name="content" ng-model="formData.text">
+                     <button type="submit"><span class="fas fa-plus" ng-click="createCourses()"></span></button>
+                </form>
+         
+               </div> 
+
+                <ul class="courses-list" ng-repeat="course in courses">
+                   <li class="courses-list-item">
+                         <div class="courses-list-item-name">{{course.title}}</div>
+        <a href="" class="edit" ng-click="editClick(course.title,course._id)">
+        <span class="fas fa-edit"></span>
+        </a>
+        <a href="" class="remove" ng-click="deleteCourses(course._id)">
+        <span class="fas fa-trash"></span>
+        </a>
+        </li>
+                  
+      </ul>
+
+        </div>
+
+  
+
+    </div> 
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <input type="text" ng-model="editText" style="width: 80%;">
+            <button ng-click="editCourses()">Save</button>
+        </div>
+      
+      </div>
+ </body>
+</html>
